@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPR Game</title>
+    <link rel="stylesheet" href="paper.css">
+    
+</head>
+<body>
+
+    <h1> Scissor - Paper - Rock </h1>
+    <div class="btn">
+        <button onclick="playGame('Scissor')">✂️</button>
+        <button onclick="playGame('Paper')">📄</button>
+        <button onclick="playGame('Rock')">✊</button>
+    </div>
+<div class="choose">
+    <p id="user-choice">You chose:</p>
+    <p id="computer-choice">Computer chose:</p>
+    <p id="result">Result:</p>
+</div>
+    
+    <script>
+        function playGame(playerChoice){
+    const choices = ["Scissor", "Paper", "Rock"];
+    const computerChoice = choices[Math.floor(Math.random()*3)];
+
+
+    document.getElementById("user-choice").innerHTML = `You chose: ${playerChoice}`;
+    document.getElementById("computer-choice").innerHTML = `Computer chose: ${computerChoice}`;
+
+    let result = "";
+
+    if(playerChoice === computerChoice){
+        result = "It's a Tie";
+    } else if( (playerChoice === "Rock" && computerChoice === "Scissor")||
+         (playerChoice === "Scissor" && computerChoice === "Paper")||
+          (playerChoice === "Paper" && computerChoice === "Rock"))
+          {
+            result = "You Win 🎉";
+          }
+          else{
+            result = "You Lose";
+          }
+ 
+          document.getElementById("result").innerHTML = `Result: <span>${result}</span>`;
+}
+    </script>
+</body>
+</html>
